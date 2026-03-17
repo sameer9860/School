@@ -24,3 +24,12 @@ class TeacherAssignment(models.Model):
     )
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     class_name = models.ForeignKey(Class, on_delete=models.CASCADE)
+
+
+class Curriculum(models.Model):
+    class_name = models.CharField(max_length=50)
+    description = models.TextField()
+    file = models.FileField(upload_to="curriculum/", blank=True)
+
+    def __str__(self):
+        return self.class_name
