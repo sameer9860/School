@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}Home · ABC School{% endblock %}
+
+{% block content %}
+  <!-- Phase 3 — Image Slider (Bootstrap Carousel) -->
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      {% for slide in sliders %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <img
+            src="{{ slide.image.url }}"
+            class="d-block w-100"
+            style="height: 400px; object-fit: cover;"
+            alt="{{ slide.title }}"
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h3>{{ slide.title }}</h3>
+            {% if slide.description %}<p>{{ slide.description }}</p>{% endif %}
+          </div>
+        </div>
+      {% empty %}
+        <div class="carousel-item active">
+          <div class="hero py-5">
+            <div class="container py-4 text-center">
+              <h1 class="display-5 fw-bold">Welcome to ABC School</h1>
+              <p class="lead mb-0">Add slider images in admin to enable the carousel.</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if sliders %}
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    {% endif %}
+  </div>
+
+  <!-- Theme headline stripes (like stx.edu.np) -->
+  <section class="theme-stripes">
+    <div class="container py-4">
+      <div class="theme-stripe">THEME OF THE YEAR: Caring for our Common Home</div>
+      <div class="theme-stripe">Building Bridges, Shaping Lives: 75 Years of Vision and Values</div>
+      <div class="theme-stripe">I will be thankful for my education.</div>
+      <div class="theme-stripe">LIVE FOR GOD, LEAD FOR NEPAL</div>
+    </div>
+  </section>
+
+  <!-- Notifications / Events / News columns -->
+  <section class="container mt-4">
+    <div class="row g-3">
+      <div class="col-lg-4">
+        <div class="card card-soft h-100">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="fw-bold">Notice</div>
+              <a class="small" href="{% url 'notices' %}">View all</a>
+            </div>
+          </div>
+          <div class="list-group list-group-flush">
+            {% for n in notices|slice:":4" %}
+              <a class="list-group-item list-group-item-action" href="{% url 'notices' %}">
+                <div class="fw-semibold">{{ n.title }}</div>
+                <div class="small text-muted">{{ n.created_at|date:"d M, Y" }}</div>
+              </a>
+            {% empty %}
+              <div class="list-group-item text-muted">No notifications yet.</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card card-soft h-100">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="fw-bold">Events</div>
+              <a class="small" href="#">View all</a>
+            </div>
+          </div>
+          <div class="list-group list-group-flush">
+            {% for e in events %}
+              <div class="list-group-item">
+                <div class="fw-semibold">{{ e.title }}</div>
+                <div class="small text-muted">{{ e.event_date|date:"d M, Y" }}</div>
+              </div>
+            {% empty %}
+              <div class="list-group-item text-muted">No events yet.</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card card-soft h-100">
+          <div class="card-header bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="fw-bold">News</div>
+              <a class="small" href="{% url 'notices' %}">View all</a>
+            </div>
+          </div>
+          <div class="list-group list-group-flush">
+            {% for n in news %}
+              <div class="list-group-item">
+                <div class="fw-semibold">{{ n.title }}</div>
+                <div class="small text-muted">{{ n.created_at|date:"d M, Y" }}</div>
+              </div>
+            {% empty %}
+              <div class="list-group-item text-muted">No news yet.</div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phase 4 — Principal’s Message -->
+  <div class="container mt-5">
+    <h2 class="text-center section-title">From the Principal’s Desk</h2>
+
+    {% if principal %}
+      <div class="row mt-4 align-items-center g-4">
+        <div class="col-md-4">
+          <img src="{{ principal.photo.url }}" class="img-fluid rounded card-soft" alt="{{ principal.name }}" />
+        </div>
+
+        <div class="col-md-8">
+          <h4 class="fw-bold mb-2">{{ principal.name }}</h4>
+          <p class="text-muted mb-0">{{ principal.message }}</p>
+        </div>
+      </div>
+    {% else %}
+      <div class="alert alert-warning mt-4 mb-0">
+        No principal message yet. Add one in admin to show it here.
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Videos -->
+  <div class="container mt-5">
+    <h2 class="text-center section-title">Watch Our Videos</h2>
+    <div class="row mt-4 g-3">
+      {% for v in videos %}
+        <div class="col-md-4">
+          <div class="card card-soft h-100">
+            <div class="ratio ratio-16x9">
+              <iframe src="{{ v.video_url }}" title="{{ v.title }}" allowfullscreen></iframe>
+            </div>
+            <div class="card-body">
+              <div class="fw-bold">{{ v.title }}</div>
+              <div class="small text-muted">{{ v.uploaded_at|date:"d M, Y" }}</div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <div class="alert alert-info mb-0">No videos yet. Add `GalleryItem` with category “video”.</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5 text-center">
+    <a class="btn btn-primary" href="{% url 'admissions' %}">Admission</a>
+    <a class="btn btn-outline-primary ms-2" href="{% url 'curriculum' %}">Curriculum</a>
+    <a class="btn btn-outline-primary ms-2" href="{% url 'gallery' %}">Gallery</a>
+  </div>
+{% endblock %}
