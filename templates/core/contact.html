@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Contact · ABC School{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h1 class="h1">Contact</h1>
+        <p class="muted">Send us a message — we’ll get back to you.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="card card--pad">
+          <form method="POST" class="form">
+            {% csrf_token %}
+
+            <div class="form__row">
+              <label class="label">Name</label>
+              <input class="input" type="text" name="name" value="{{ data.name|default:'' }}" />
+              {% if errors.name %}<div class="error">{{ errors.name }}</div>{% endif %}
+            </div>
+
+            <div class="form__row">
+              <label class="label">Email</label>
+              <input class="input" type="email" name="email" value="{{ data.email|default:'' }}" />
+              {% if errors.email %}<div class="error">{{ errors.email }}</div>{% endif %}
+            </div>
+
+            <div class="form__row">
+              <label class="label">Message</label>
+              <textarea class="textarea" name="message" rows="5">{{ data.message|default:'' }}</textarea>
+              {% if errors.message %}<div class="error">{{ errors.message }}</div>{% endif %}
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Send</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <h2 class="h2">Office</h2>
+          </div>
+          <div class="prose">
+            <p class="muted">
+              You can also visit during office hours for admissions and inquiries.
+            </p>
+            <div class="kv">
+              <div class="kv__row"><span class="kv__k">Phone</span><span class="kv__v">+977-01-XXXXXXX</span></div>
+              <div class="kv__row"><span class="kv__k">Email</span><span class="kv__v">info@abcschool.edu.np</span></div>
+              <div class="kv__row"><span class="kv__k">Hours</span><span class="kv__v">Sun–Fri · 10:00–16:00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
