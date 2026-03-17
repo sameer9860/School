@@ -19,3 +19,21 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class GalleryItem(models.Model):
+    CATEGORY = (
+        ("photo", "Photo"),
+        ("video", "Video"),
+    )
+
+    title = models.CharField(max_length=200)
+    category = models.CharField(max_length=10, choices=CATEGORY)
+
+    image = models.ImageField(upload_to="gallery/", blank=True, null=True)
+    video_url = models.URLField(blank=True, null=True)
+
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
