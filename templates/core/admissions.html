@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Admissions · ABC School{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h1 class="h1">Admissions</h1>
+        <p class="muted">Fill the form to apply for admission.</p>
+      </div>
+
+      <div class="card card--pad">
+        <form method="POST" enctype="multipart/form-data" class="form">
+          {% csrf_token %}
+
+          <div class="form__row">
+            <label class="label">Student name</label>
+            <input class="input" type="text" name="student_name" value="{{ data.student_name|default:'' }}" />
+            {% if errors.student_name %}<div class="error">{{ errors.student_name }}</div>{% endif %}
+          </div>
+
+          <div class="form__row">
+            <label class="label">Date of birth</label>
+            <input class="input" type="date" name="date_of_birth" value="{{ data.date_of_birth|default:'' }}" />
+            {% if errors.date_of_birth %}<div class="error">{{ errors.date_of_birth }}</div>{% endif %}
+          </div>
+
+          <div class="form__row">
+            <label class="label">Class applying</label>
+            <input class="input" type="text" name="class_applying" value="{{ data.class_applying|default:'' }}" />
+            {% if errors.class_applying %}<div class="error">{{ errors.class_applying }}</div>{% endif %}
+          </div>
+
+          <div class="form__row">
+            <label class="label">Parent/Guardian name</label>
+            <input class="input" type="text" name="parent_name" value="{{ data.parent_name|default:'' }}" />
+            {% if errors.parent_name %}<div class="error">{{ errors.parent_name }}</div>{% endif %}
+          </div>
+
+          <div class="form__row">
+            <label class="label">Phone</label>
+            <input class="input" type="text" name="phone" value="{{ data.phone|default:'' }}" />
+            {% if errors.phone %}<div class="error">{{ errors.phone }}</div>{% endif %}
+          </div>
+
+          <div class="form__row">
+            <label class="label">Address</label>
+            <textarea class="textarea" name="address" rows="4">{{ data.address|default:'' }}</textarea>
+            {% if errors.address %}<div class="error">{{ errors.address }}</div>{% endif %}
+          </div>
+
+          <div class="form__row">
+            <label class="label">Document (PDF/JPG)</label>
+            <input class="input" type="file" name="document" />
+            {% if errors.document %}<div class="error">{{ errors.document }}</div>{% endif %}
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Apply</button>
+            <a class="btn btn--ghost" href="{% url 'home' %}">Back to home</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}
