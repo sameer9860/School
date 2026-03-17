@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Admission submitted · ABC School{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="card card--pad">
+        <h1 class="h1">Application submitted</h1>
+        <p class="muted">Thank you. We’ll review your admission request and contact you soon.</p>
+        <div class="section__actions">
+          <a class="btn btn--primary" href="{% url 'home' %}">Go to home</a>
+          <a class="btn btn--ghost" href="{% url 'admissions' %}">Submit another</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
