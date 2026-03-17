@@ -1,0 +1,40 @@
+<footer class="footer">
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="fw-bold mb-2">ABC School</div>
+        <div class="opacity-75 small">
+          Jawalakhel, Lalitpur, Nepal<br />
+          01-5421050, 01-5421150<br />
+          info@abcschool.edu.np
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="fw-bold mb-2">Links</div>
+        <div class="d-grid gap-1">
+          <a href="{% url 'about' %}">About Us</a>
+          <a href="{% url 'notices' %}">Notifications</a>
+          <a href="{% url 'gallery' %}">Gallery</a>
+          <a href="{% url 'curriculum' %}">Curriculum</a>
+          <a href="{% url 'contact' %}">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="fw-bold mb-2">Connect</div>
+        <div class="social">
+          <a href="https://facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer__hr my-4" />
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 small opacity-75">
+      <div>© {% now "Y" %} ABC School. All right Reserved.</div>
+      <div>Crafted By ABC IT Team</div>
+    </div>
+  </div>
+</footer>
