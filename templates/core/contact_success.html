@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Message sent · ABC School{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="card card--pad">
+        <h1 class="h1">Message sent</h1>
+        <p class="muted">Thanks for reaching out. We’ll respond as soon as possible.</p>
+        <div class="section__actions">
+          <a class="btn btn--primary" href="{% url 'home' %}">Go to home</a>
+          <a class="btn btn--ghost" href="{% url 'contact' %}">Send another</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
