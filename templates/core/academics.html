@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Academics · ABC School{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h1 class="h1">Academics</h1>
+        <p class="muted">Classes and subjects offered.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel__header">
+            <h2 class="h2">Classes</h2>
+          </div>
+          {% if classes %}
+            <ul class="list">
+              {% for c in classes %}
+                <li class="list__item">
+                  <div class="list__title">{{ c.name }}</div>
+                  <div class="muted">Section: {{ c.section }}</div>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <div class="empty">
+              <div class="empty__title">No classes yet</div>
+              <div class="muted">Add `academics.Class` in admin.</div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="panel">
+          <div class="panel__header">
+            <h2 class="h2">Subjects</h2>
+          </div>
+          {% if subjects %}
+            <ul class="list">
+              {% for s in subjects %}
+                <li class="list__item">
+                  <div class="list__title">{{ s.name }}</div>
+                  <div class="muted">Class: {{ s.class_name }}</div>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <div class="empty">
+              <div class="empty__title">No subjects yet</div>
+              <div class="muted">Add `academics.Subject` in admin.</div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
