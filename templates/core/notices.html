@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Notices · ABC School{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h1 class="h1">Notices</h1>
+        <p class="muted">Latest announcements and downloads.</p>
+      </div>
+
+      {% if notices %}
+        <div class="grid">
+          {% for notice in notices %}
+            <article class="notice">
+              <div class="notice__title">{{ notice.title }}</div>
+              <div class="notice__meta muted">
+                {{ notice.created_at|date:"Y-m-d H:i" }}
+                {% if notice.created_by %} · by {{ notice.created_by }}{% endif %}
+              </div>
+              <div class="notice__desc">{{ notice.description|linebreaksbr }}</div>
+              {% if notice.file %}
+                <div class="section__actions">
+                  <a class="btn btn--ghost" href="{{ notice.file.url }}">Download attachment</a>
+                </div>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="empty">
+          <div class="empty__title">No notices yet</div>
+          <div class="muted">Add notices in admin to publish them here.</div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}
