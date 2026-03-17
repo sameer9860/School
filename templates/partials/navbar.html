@@ -1,0 +1,66 @@
+<div class="topbar py-1">
+  <div class="container d-flex justify-content-between align-items-center small">
+    <div class="d-flex gap-3 flex-wrap">
+      <span class="opacity-75">+977 9841000000 , +977 9841000000 | info@abcschool.edu.np</span>
+      <span class="opacity-75">Dhading, Nepal</span>
+    </div>
+    <div class="d-flex gap-2">
+      <a class="topbar__link" href="/admin/">Login</a>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark nav-main">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="{% url 'home' %}">
+      ABC School
+      <span class="brand-sub d-none d-md-inline">Live for God, Lead for Nepal</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'about' %}">About</a></li>
+            <li><a class="dropdown-item" href="{% url 'about' %}">Vision & Mission</a></li>
+            <li><a class="dropdown-item" href="{% url 'about' %}">From the Principal</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Gallery</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'gallery' %}">Photos</a></li>
+            <li><a class="dropdown-item" href="{% url 'gallery' %}">Videos</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Curriculum</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'curriculum' %}">Curriculum Downloads</a></li>
+            <li><a class="dropdown-item" href="{% url 'academics' %}">Academics</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item"><a href="{% url 'notices' %}" class="nav-link">Notifications</a></li>
+        <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
