@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Gallery · ABC School{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2 class="text-center section-title">Gallery</h2>
+
+    <div class="row mt-4 g-3">
+      {% for item in items %}
+        <div class="col-md-4">
+          <div class="card card-soft h-100">
+            {% if item.category == "photo" and item.image %}
+              <img src="{{ item.image.url }}" class="img-fluid rounded-top" alt="{{ item.title }}" style="height: 220px; object-fit: cover;" />
+            {% elif item.category == "video" and item.video_url %}
+              <div class="ratio ratio-16x9">
+                <iframe src="{{ item.video_url }}" title="{{ item.title }}" allowfullscreen></iframe>
+              </div>
+            {% endif %}
+            <div class="card-body">
+              <div class="fw-bold">{{ item.title }}</div>
+              <div class="text-muted small">{{ item.uploaded_at|date:"Y-m-d" }}</div>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <div class="alert alert-info mb-0">No gallery items yet. Add them in admin.</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
