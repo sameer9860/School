@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}About · ABC School{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="section__header">
+        <h1 class="h1">About us</h1>
+        <p class="muted">Learn about our mission, vision, and campus.</p>
+      </div>
+
+      <div class="card card--pad">
+        {% if school %}
+          <div class="kv">
+            <div class="kv__row"><span class="kv__k">School</span><span class="kv__v">{{ school.name }}</span></div>
+            <div class="kv__row"><span class="kv__k">Address</span><span class="kv__v">{{ school.address }}</span></div>
+            <div class="kv__row"><span class="kv__k">Phone</span><span class="kv__v">{{ school.phone }}</span></div>
+            <div class="kv__row"><span class="kv__k">Email</span><span class="kv__v">{{ school.email }}</span></div>
+          </div>
+          <hr class="hr" />
+          <div class="prose">{{ school.about|linebreaks }}</div>
+        {% else %}
+          <div class="empty">
+            <div class="empty__title">No school info added yet</div>
+            <div class="muted">Add a `core.SchoolInfo` record from the admin panel.</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
