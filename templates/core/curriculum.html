@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Curriculum · ABC School{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2 class="text-center section-title">Curriculum</h2>
+
+    <div class="mt-4">
+      {% for c in data %}
+        <div class="card card-soft mb-3">
+          <div class="card-body">
+            <h4 class="fw-bold">{{ c.class_name }}</h4>
+            <p class="text-muted mb-2">{{ c.description }}</p>
+
+            {% if c.file %}
+              <a href="{{ c.file.url }}" class="btn btn-primary">Download</a>
+            {% endif %}
+          </div>
+        </div>
+      {% empty %}
+        <div class="alert alert-info mb-0">No curriculum uploaded yet.</div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
+
