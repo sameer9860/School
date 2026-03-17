@@ -1,0 +1,108 @@
+/* Small custom layer on top of Bootstrap */
+
+body {
+  background: #f6f8ff;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout__main {
+  flex: 1 0 auto;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+}
+.topbar__link {
+  color: rgba(11, 18, 32, 0.70);
+  text-decoration: none;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 18, 32, 0.12);
+}
+.topbar__link:hover {
+  text-decoration: none;
+  background: rgba(11, 18, 32, 0.04);
+}
+
+.nav-main {
+  background: linear-gradient(180deg, #0b2a6f, #082056);
+}
+.brand-sub {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 600;
+  opacity: 0.85;
+  font-size: 0.85rem;
+}
+
+.section-title {
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.hero {
+  background: linear-gradient(180deg, #0d47a1, #0b2a6f);
+  color: #fff;
+}
+
+.hero .lead {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.card-soft {
+  border: 1px solid rgba(11, 18, 32, 0.08);
+  box-shadow: 0 10px 26px rgba(11, 18, 32, 0.08);
+}
+
+.theme-stripes {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(11, 18, 32, 0.08);
+}
+.theme-stripe {
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  color: #0b2a6f;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(11, 18, 32, 0.10);
+}
+.theme-stripe:last-child {
+  border-bottom: 0;
+}
+
+.footer {
+  background: #071a40;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.social a {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+.footer__hr {
+  border-color: rgba(255, 255, 255, 0.16);
+}
